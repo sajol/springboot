@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource = "org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="com.springboot.controllers" level="debug" additivity="false">
+    <!--<logger name="com.springboot.controllers" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
-    </logger>
+    </logger>-->
+    <!--logback configuration using active spring profile-->
+    <springProfile name="dev,staging">
+        <logger name="com.springboot.controllers" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+    </springProfile>
+    <springProfile name="production">
+        <logger name="com.springboot.controllers" level="WARN" additivity="false">
+            <appender-ref ref="FILE" />
+        </logger>
+    </springProfile>
 </configuration>
