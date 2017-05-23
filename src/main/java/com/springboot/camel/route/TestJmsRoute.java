@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  * Author: sazal
  * Date: 5/22/17.
  */
-@Component
 public class TestJmsRoute extends RouteBuilder{
 
     static final Logger LOG = LoggerFactory.getLogger(TestJmsRoute.class.getName());
