@@ -20,7 +20,7 @@ public class TestJmsRoute extends RouteBuilder{
         from("{{inbound.endpoint}}")
                 .transacted()
                 .log(LoggingLevel.INFO, LOG, "Received message")
-                .process(exchange -> LOG.info("Exchange=>", exchange.getOut().getBody().toString()))
+                .process(exchange -> LOG.info("Exchange=>", exchange))
                 .loop()
                 .simple("{{outbound.loop.count}}")
                 .to("{{outbound.endpoint}}")
