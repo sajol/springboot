@@ -31,7 +31,7 @@ public class NewsFeedExample extends RouteBuilder {
 
 
     private RouteDefinition configureRouteFor(RSS rss) {
-        return from("quartz2://" + rss.getLowerCaseName() + "?cron=0/30 * * * * ?")
+        return from("quartz2://" + rss.getLowerCaseName() + "?cron=0 0/15 * 1/1 * ? *")
                 .to(rss.getUrl())
                 .wireTap("file:data/inbox/feed/xml/" + rss.getName())
                 .end()
