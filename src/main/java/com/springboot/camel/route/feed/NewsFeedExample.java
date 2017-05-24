@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * Author: sazal
  * Date: 5/15/17
  */
-@Component
+
 public class NewsFeedExample extends RouteBuilder {
 
     private final XmlJsonDataFormat xmlJsonFormat = new XmlJsonDataFormat();

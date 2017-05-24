@@ -12,7 +12,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/greetings', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+            showGreeting(JSON.parse(greeting.body).message);
         });
     });
 }
@@ -30,7 +30,7 @@ function disconnect() {
  }*/
 
 function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+    $(".nws").append("<tr><td>" + message + "</td></tr>");
 }
 
 $(function () {
