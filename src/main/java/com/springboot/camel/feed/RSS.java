@@ -1,4 +1,4 @@
-package com.springboot.camel.route.feed;
+package com.springboot.camel.feed;
 
 /**
  * Author: sazal

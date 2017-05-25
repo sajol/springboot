@@ -1,4 +1,4 @@
-package com.springboot.camel.route.feed;
+package com.springboot.camel.feed;
 
 import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat;
 import org.springframework.context.annotation.Scope;

@@ -1,12 +1,12 @@
 package com.springboot.camel.route.feed;
 
+import com.springboot.camel.feed.RSS;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.model.dataformat.XmlJsonDataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 /**
  * Author: sazal
