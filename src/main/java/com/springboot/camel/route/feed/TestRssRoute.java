@@ -11,17 +11,13 @@ public class TestRssRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        from("rss:" + RSS.BBC.getUrl() + "?consumer.delay=5000&splitEntries=true")
+        from("rss:" + RSS.BBC.getUrl() + "?initialDelay=15000&consumer.delay=1000&splitEntries=true")
                 .routeId(RSS.BBC.getName())
                 .to("bean:rssFeedHandler");
-                /*.marshal().rss() // convert from Rome's model to XML
-                .marshal().xmljson() // convert from XML to JSON
-                .to("log:test"); // output the result to the log*/
 
 
-        /*from("rss:" + RSS.NYT.getUrl() + "?consumer.delay=15000")
-                .marshal().rss()
-                .marshal().xmljson()
-                .to("log:test");*/
+        from("rss:" + RSS.NYT.getUrl() + "?initialDelay=15000&consumer.delay=1000&splitEntries=true")
+                .routeId(RSS.NYT.getName())
+                .to("bean:rssFeedHandler");
     }
 }

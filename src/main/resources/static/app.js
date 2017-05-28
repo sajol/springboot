@@ -1,8 +1,9 @@
 var stompClient = null;
 
 function setConnected(connected) {
-
-    $("#greetings").html("");
+    if(connected){
+        invokeIrt();
+    }
 }
 
 
@@ -10,17 +11,10 @@ function connect() {
     var socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        setConnected(true);
         console.log('Connected: ' + frame);
-
-        stompClient.subscribe('/topic/greetings', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).message);
-        });
-
         stompClient.subscribe('/topic/feeds', function (message) {
             showFeeds(JSON.parse(message.body));
         });
-
     });
 }
 
@@ -36,7 +30,6 @@ function showFeeds(feed) {
 
 function getFeedBlock(feed){
     return "<a href='"+ feed.url +"'>" +
-           "<p>" + feed.title + "</p>" +
            "<p>" + feed.description + "</p>" +
            "</a>";
 }
@@ -62,7 +55,6 @@ function invokeIrt() {
         url: '/irt',
         success: function (result) {
             console.log('initialized');
-
         },
         error: function (xhr, textStatus, errorThrown) {
         }
@@ -72,5 +64,4 @@ function invokeIrt() {
 
 $(function () {
     connect();
-    invokeIrt();
 });

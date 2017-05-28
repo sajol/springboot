@@ -20,10 +20,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class FeedController {
 
-    @Autowired
-    private CamelContext context;
+    private final CamelContext context;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FeedController.class.getName());
+
+    @Autowired
+    public FeedController(CamelContext context) {
+        this.context = context;
+    }
 
     @RequestMapping(value = "/feed", method = RequestMethod.GET)
     public String feeds() {
@@ -33,10 +37,11 @@ public class FeedController {
     @RequestMapping(value = "/irt", method = RequestMethod.GET, produces = {"application/json"})
     public @ResponseBody
     ResponseEntity<String> irt() throws Exception {
-        synchronized (this){
-            if(context.getRoute(RSS.BBC.getName()) == null){
+        synchronized (this) {
+            if (context.getRoute(RSS.BBC.getName()) == null &&
+                    context.getRoute(RSS.NYT.getName()) == null) {
                 context.addRoutes(new TestRssRoute());
-                LOGGER.info("===================== initialized irt ==========================");
+                LOGGER.info("initialized irt");
             }
         }
         return new ResponseEntity<>(HttpStatus.OK);
