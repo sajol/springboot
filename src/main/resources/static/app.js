@@ -26,7 +26,7 @@ function showFeeds(feed) {
 function getFeedBlock(feed){
     return  "<tr>" +
             "<td class='col-xs-12'>" +
-            "<a href='"+ feed.url +"'>" +
+            "<a href='"+ feed.url +"' target='_blank'>" +
             feed.description +
             "</a>" +
             "</td>" +
