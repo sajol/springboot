@@ -1,0 +1,47 @@
+body {
+    background-color: #bdc3c7;
+}
+
+.table-fixed {
+    width: 100%;
+    background-color: #f3f3f3;
+}
+
+.table-fixed tbody {
+    height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    background-color: beige;
+}
+
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+    display: block;
+}
+
+.table-fixed tbody td {
+    float: left;
+}
+
+.table-fixed thead tr th {
+    float: left;
+    background: transparent url(/top-red-bar.png) repeat 0pt;
+    overflow: hidden;
+}
+
+.table tbody tr td {
+    border-top: 1px solid goldenrod;
+}
+
+th{
+    text-align: center;
+    color: white;
+}
+
+tbody tr td{
+    font-size: 15px;
+    font-family: Verdana, arial, sans-serif;
+}
+
+#feedContainer{
+    margin-top: 10%;
+}

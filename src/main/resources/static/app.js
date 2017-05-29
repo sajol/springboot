@@ -1,12 +1,5 @@
 var stompClient = null;
 
-function setConnected(connected) {
-    if(connected){
-        invokeIrt();
-    }
-}
-
-
 function connect() {
     var socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
@@ -21,47 +14,59 @@ function connect() {
 
 function showFeeds(feed) {
     if(feed.type == "BBC"){
-        $("#bbc").append(getFeedBlock(feed));
+        stopSpinner(bbcSpinner);
+        $(getFeedBlock(feed)).hide().prependTo("#bbc").fadeIn();
     }else if(feed.type == "NYT"){
-        $("#nyt").append(getFeedBlock(feed));
+        stopSpinner(nytSpinner);
+        $(getFeedBlock(feed)).hide().prependTo("#nyt").fadeIn();
     }
 }
 
 
 function getFeedBlock(feed){
-    return "<a href='"+ feed.url +"'>" +
-           "<p>" + feed.description + "</p>" +
-           "</a>";
+    return  "<tr>" +
+            "<td class='col-xs-12'>" +
+            "<a href='"+ feed.url +"'>" +
+            feed.description +
+            "</a>" +
+            "</td>" +
+            "</tr>";
 }
 
 
-function disconnect() {
-    if (stompClient != null) {
-        stompClient.disconnect();
+function stopSpinner(spinner){
+    if($(".nws div.spinner").length > 0){
+        spinner.stop();
     }
-    setConnected(false);
-    console.log("Disconnected");
 }
 
 
-function showGreeting(message) {
-    $(".nws").append("<tr><td>" + message + "</td></tr>");
+function initializeSpinner(){
+    var opts = {
+        lines: 11,
+        length: 7,
+        width: 10,
+        radius: 26,
+        corners: 1,
+        opacity: 0.25,
+        rotate: 0,
+        direction: 1,
+        speed: 0.8,
+        trail: 60,
+        shadow: true,
+        hwaccel: true,
+        top: '50%',
+        left: '50%'
+    };
+    var bbc = document.getElementById('bbc');
+    bbcSpinner = new Spinner(opts).spin(bbc);
+
+    var nyt = document.getElementById('nyt');
+    nytSpinner = new Spinner(opts).spin(nyt);
 }
 
-function invokeIrt() {
-    $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: '/irt',
-        success: function (result) {
-            console.log('initialized');
-        },
-        error: function (xhr, textStatus, errorThrown) {
-        }
-    });
-}
 
-
-$(function () {
+$(document).ready(function () {
     connect();
+    initializeSpinner();
 });
