@@ -1,4 +1,4 @@
-package com.springboot.camel.feed;
+package com.springboot.camel.feed.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

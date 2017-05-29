@@ -1,7 +1,7 @@
 package com.springboot.controllers;
 
 import com.springboot.camel.feed.RSS;
-import com.springboot.camel.route.feed.TestRssRoute;
+import com.springboot.camel.feed.route.RssRoute;
 import org.apache.camel.CamelContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +40,7 @@ public class FeedController {
         synchronized (this) {
             if (context.getRoute(RSS.BBC.getName()) == null &&
                     context.getRoute(RSS.NYT.getName()) == null) {
-                context.addRoutes(new TestRssRoute());
+                context.addRoutes(new RssRoute());
                 LOGGER.info("initialized irt");
             }
         }

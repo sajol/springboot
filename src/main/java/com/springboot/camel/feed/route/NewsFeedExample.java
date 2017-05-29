@@ -1,4 +1,4 @@
-package com.springboot.camel.route.feed;
+package com.springboot.camel.feed.route;
 
 import com.springboot.camel.feed.RSS;
 import org.apache.camel.Processor;

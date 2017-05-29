@@ -1,4 +1,4 @@
-package com.springboot.camel.route.feed;
+package com.springboot.camel.feed.route;
 
 import com.springboot.camel.feed.RSS;
 import org.apache.camel.builder.RouteBuilder;
@@ -7,7 +7,7 @@ import org.apache.camel.builder.RouteBuilder;
  * Author: sazal
  * Date: 5/25/17
  */
-public class TestRssRoute extends RouteBuilder {
+public class RssRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 

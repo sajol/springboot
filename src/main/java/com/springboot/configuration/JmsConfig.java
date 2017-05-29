@@ -25,7 +25,7 @@ public class JmsConfig {
     @Bean
     public JmsComponent createJmsComponent(final ConnectionFactory connectionFactory,
                                            final JmsTransactionManager jmsTransactionManager,
-                                               @Value("${max.concurrent.consumers}") final int maxConcurrentConsumers) {
+                                           @Value("${max.concurrent.consumers}") final int maxConcurrentConsumers) {
         JmsComponent jmsComponent = JmsComponent.jmsComponentTransacted(connectionFactory, jmsTransactionManager);
         jmsComponent.setMaxConcurrentConsumers(maxConcurrentConsumers);
         return jmsComponent;
