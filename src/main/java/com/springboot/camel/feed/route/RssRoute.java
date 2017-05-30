@@ -11,12 +11,12 @@ public class RssRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        from("rss:" + RSS.BBC.getUrl() + "?initialDelay=15000&consumer.delay=1000&splitEntries=true")
+        from("rss:" + RSS.BBC.getUrl() + "?initialDelay=15000")
                 .routeId(RSS.BBC.getName())
                 .to("bean:rssFeedHandler");
 
 
-        from("rss:" + RSS.NYT.getUrl() + "?initialDelay=15000&consumer.delay=1000&splitEntries=true")
+        from("rss:" + RSS.NYT.getUrl() + "?initialDelay=15000")
                 .routeId(RSS.NYT.getName())
                 .to("bean:rssFeedHandler");
     }

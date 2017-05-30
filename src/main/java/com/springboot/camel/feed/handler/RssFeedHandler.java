@@ -39,9 +39,11 @@ public class RssFeedHandler {
     }
 
     public void sendBody(@Body SyndFeed syndFeed) {
-        Feed feed = feedFactory.createFeed(syndFeed.getTitle(), (SyndEntry) syndFeed.getEntries().get(0));
-        if (feed != null) {
-            msgTemplate.convertAndSend("/topic/feeds", feed);
-        }
+        syndFeed
+                .getEntries()
+                .stream()
+                .map(entry -> feedFactory.createFeed(syndFeed.getTitle(), (SyndEntry) entry))
+                .filter(f -> f != null)
+                .forEach(f -> msgTemplate.convertAndSend("/topic/feeds", f));
     }
 }
