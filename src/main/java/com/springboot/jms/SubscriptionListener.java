@@ -1,4 +1,4 @@
-package com.springboot.configuration;
+package com.springboot.jms;
 
 import com.springboot.camel.feed.RSS;
 import com.springboot.camel.feed.route.RssRoute;

@@ -2,7 +2,6 @@ package com.springboot.camel.feed.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.Route;
 import org.apache.camel.builder.xml.XPathBuilder;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,7 @@ import java.util.Date;
  */
 @Component
 @Qualifier(value = "feedProcessor")
-public class FeedProcessor implements Processor{
+public class FeedProcessor implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         String title = XPathBuilder.xpath("/rss/channel/title").evaluate(exchange.getContext(), exchange.getIn().getBody());

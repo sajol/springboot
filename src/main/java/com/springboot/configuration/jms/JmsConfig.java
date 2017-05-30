@@ -1,4 +1,4 @@
-package com.springboot.configuration;
+package com.springboot.configuration.jms;
 
 import org.apache.camel.component.jms.JmsComponent;
 import org.springframework.beans.factory.annotation.Value;

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HelloController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String hello(ModelMap model) {
         logger.info("Inside " + this.getClass().getName());
