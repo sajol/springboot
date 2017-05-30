@@ -1,4 +1,6 @@
 var stompClient = null;
+var bbcCounter = 0;
+var nytCounter = 0;
 
 function connect() {
     var socket = new SockJS('/ws');
@@ -15,18 +17,18 @@ function connect() {
 function showFeeds(feed) {
     if(feed.type == "BBC"){
         stopSpinner(bbcSpinner);
-        $(getFeedBlock(feed)).hide().prependTo("#bbc").fadeIn();
+        $(getFeedBlock(feed, bbcCounter++)).hide().prependTo("#bbc").fadeIn();
     }else if(feed.type == "NYT"){
         stopSpinner(nytSpinner);
-        $(getFeedBlock(feed)).hide().prependTo("#nyt").fadeIn();
+        $(getFeedBlock(feed, nytCounter++)).hide().prependTo("#nyt").fadeIn();
     }
 }
 
 
-function getFeedBlock(feed){
+function getFeedBlock(feed, count){
     return  "<tr>" +
             "<td class='col-xs-12'>" +
-            "<a href='"+ feed.url +"' target='_blank'>" +
+            "<a href='"+ feed.url +"' target='_blank'>" + count + '.&nbsp;&nbsp;' +
             feed.description +
             "</a>" +
             "</td>" +
