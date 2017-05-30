@@ -17,10 +17,10 @@ function connect() {
 function showFeeds(feed) {
     if(feed.type == "BBC"){
         stopSpinner(bbcSpinner);
-        $(getFeedBlock(feed, bbcCounter++)).hide().prependTo("#bbc").fadeIn();
+        $(getFeedBlock(feed, ++bbcCounter)).hide().prependTo("#bbc").fadeIn();
     }else if(feed.type == "NYT"){
         stopSpinner(nytSpinner);
-        $(getFeedBlock(feed, nytCounter++)).hide().prependTo("#nyt").fadeIn();
+        $(getFeedBlock(feed, ++nytCounter)).hide().prependTo("#nyt").fadeIn();
     }
 }
 
