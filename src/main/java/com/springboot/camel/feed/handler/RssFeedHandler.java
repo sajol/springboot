@@ -1,7 +1,6 @@
 package com.springboot.camel.feed.handler;
 
 import com.springboot.camel.feed.BaseRssFeedFactory;
-import com.springboot.camel.feed.Feed;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import org.apache.camel.Body;
